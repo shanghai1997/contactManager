@@ -8,8 +8,8 @@ import { Contact } from "../../Entity";
   styleUrls: ['./contactLine.component.scss']
 })
 export class ContactLineComponent implements OnInit, OnDestroy {
-  @Input() contact: Contact
-
+  @Input() contact: Contact;
+  editable: boolean = false;
   constructor(
   ) {
   }

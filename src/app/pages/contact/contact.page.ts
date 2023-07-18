@@ -1,5 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {BehaviorSubject, interval, map, mergeMap, timer} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Contact} from "../Entity";
 
 @Component({

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/workGPT/contact.module').then(m => m.ContactModule),
+    loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule),
     pathMatch: 'full'
   }
 ];

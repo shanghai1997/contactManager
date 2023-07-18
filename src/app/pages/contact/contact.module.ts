@@ -1,18 +1,18 @@
-import { WorkGPTRoutingModule } from "./contact-routing.moudle";
+import { ContactRoutingModule } from "./contact-routing.moudle";
 import { IonicModule } from "@ionic/angular";
 import { ContactPage } from "./contact.page";
 import { NgModule } from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {ChatBlockComponent} from "./chat-block/chatBlock.component";
+import { CommonModule} from "@angular/common";
+import { ContactLineComponent } from "./contact-line/contactLine.component";
 
 @NgModule({
   declarations: [
     ContactPage,
-    ChatBlockComponent
+    ContactLineComponent
   ],
   imports: [
     IonicModule,
-    WorkGPTRoutingModule,
+    ContactRoutingModule,
     CommonModule,
   ]
 })

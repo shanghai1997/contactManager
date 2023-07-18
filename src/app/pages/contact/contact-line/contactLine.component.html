@@ -8,10 +8,13 @@
     </ion-col>
     <ion-col>{{contact.date | date: 'mediumDate'}}</ion-col>
     <ion-col>
-      <ion-button  (click)="this.editable = true">
+      <ion-button *ngIf="!editable" (click)="this.editable = true">
         <ion-label> Edit </ion-label>
       </ion-button>
-      <ion-button>
+      <ion-button *ngIf="editable">
+        <ion-label> Update </ion-label>
+      </ion-button>
+      <ion-button (click)="conFirmDelete()">
         <ion-label> Delete </ion-label>
       </ion-button>
     </ion-col>>

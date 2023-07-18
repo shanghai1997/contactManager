@@ -1,6 +1,6 @@
-import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {BehaviorSubject, interval, map, mergeMap, Observable, timer} from "rxjs";
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { Contact } from "../../Entity";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: 'app-contact-line',
@@ -10,12 +10,23 @@ import { Contact } from "../../Entity";
 export class ContactLineComponent implements OnInit, OnDestroy {
   @Input() contact: Contact;
   editable: boolean = false;
-  constructor(
+  constructor( private alertController: AlertController
   ) {
   }
 
   ngOnInit() {
   }
+
+  async conFirmDelete(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Important message',
+      message: 'Are you sure to delete this contact?',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+}
 
   ngOnDestroy() {
   }

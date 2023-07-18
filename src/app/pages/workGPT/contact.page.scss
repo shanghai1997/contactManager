@@ -1,0 +1,109 @@
+.leftSideBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: none;
+  float: left;
+  height: 100%;
+  width: 18%;
+  background-color: black;
+
+  .top-line {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+    height: max-content;
+
+    ion-button {
+      font-size: 12px;
+      height: 45px;
+      background-color: black;
+      border-radius: 5px;
+      --background: black;
+      --color: white;
+      --border-color: blue;
+      --border-style: solid;
+      --border-width: 1px;
+    }
+
+    ion-button:nth-child(1) {
+      width: 70%;
+    }
+
+    ion-button:nth-child(2) {
+      width: 20%;
+      padding-right: 5px;
+    }
+
+  }
+
+  ion-item-group {
+    ion-item-divider {
+      font-size: 10px;
+      --background: black;
+      --color: grey;
+    }
+    ion-item {
+      --color: white;
+      font-size: 12px;
+      ion-icon {
+        margin-right: 15px;
+      }
+      ion-label {
+
+      }
+    }
+  }
+}
+
+.main-content {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 82%;
+  //background-color: #0d66c2;
+  .chat-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 70%;
+    app-chat-block {
+      width: 100%;
+    }
+  }
+  .input-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    ion-item {
+      width: 70%;
+      --border-color: grey;
+      --border-width: 2px;
+      --border-radius: 20px;
+      --highlight-height: 0px;
+
+      .button-disabled {
+        --color: #929397;
+      }
+
+      .has-focus {
+        --highlight-color-focused: grey;
+        --highlight-background: grey !important;
+      }
+    }
+  }
+}
+
+@media(width < 700px) {
+  .leftSideBar {
+    display: none;
+  }
+  .main-content {
+    width: 100%;
+  }
+}

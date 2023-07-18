@@ -1,0 +1,28 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: max-content;
+  ion-item {
+    ion-label {
+      text-align: start;
+      position: absolute;
+      left: 20%;
+      right: 20%
+    }
+  }
+  ion-card {
+    ion-card-content {
+      color: white;
+      background: black;
+      padding: 0;
+      ion-item {
+        --background: grey;
+        --color: white;
+      }
+      code {
+      }
+    }
+  }
+}

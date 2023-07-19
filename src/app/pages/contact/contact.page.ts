@@ -25,11 +25,11 @@ export class ContactPage implements OnInit, OnDestroy {
 
   onDeleteContact(id: number) {
     this.contactList = this.contactList.filter(contact => contact.id !== id)
-    this.displayedList = this.contactList.filter(c => c.name && c.name.includes(this.filterContent))
+    this.displayedList = this.filterContent ? this.contactList.filter(c => c.name && c.name.includes(this.filterContent)) : [...this.contactList];
   }
 
   updateDisplayedList(event) {
-    this.displayedList = this.contactList.filter(c => c.name && c.name.includes(event.target!.value))
+    this.displayedList = event.target!.value.slice().length>0 ? this.contactList.filter(c => c.name && c.name.includes(event.target!.value)) : [...this.contactList]
   }
 
   sortDisplayedList(type: number) {
@@ -40,7 +40,7 @@ export class ContactPage implements OnInit, OnDestroy {
 
   addLine() {
     this.contactList.push({id: Math.random()*100 + Math.random()*100, number: 0, name: 'sample', date: new Date()})
-    this.displayedList = this.contactList.filter(c => c.name && c.name.includes(this.filterContent))
+    this.displayedList = this.contactList.filter(c => c.name && (c.name === 'sample' || c.name.includes(this.filterContent)))
   }
 
   ngOnDestroy() {

@@ -39,8 +39,8 @@ export class ContactPage implements OnInit, OnDestroy {
   }
 
   addLine() {
-    this.contactList.push({id: Math.random()*100 + Math.random()*100, number: 0, name: 'sample', date: new Date()})
-    this.displayedList = this.contactList.filter(c => c.name && (c.name === 'sample' || c.name.includes(this.filterContent)))
+    this.contactList.push({id: Math.random()*100 + Math.random()*100, number: null, name: 'sample', date: new Date()})
+    this.displayedList = this.filterContent ? this.contactList.filter(c => c.name && (c.name === 'sample' || c.name.includes(this.filterContent))) : [...this.contactList]
   }
 
   ngOnDestroy() {

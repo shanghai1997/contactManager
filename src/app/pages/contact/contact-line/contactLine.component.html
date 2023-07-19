@@ -4,7 +4,9 @@
       <ion-input [disabled]="!editable" [clearOnEdit]="true" [(ngModel)]="contact.name"></ion-input>
     </ion-col>
     <ion-col>
-      <ion-input [disabled]="!editable" [clearOnEdit]="true" [(ngModel)]="contact.number"></ion-input>
+      <ion-input placeholder="+1 (xxx) xxx-xxxx"
+                 [maskito]="phoneMask"
+                 [maskitoElement]="maskPredicate" [disabled]="!editable" [clearOnEdit]="true" [(ngModel)]="contact.number"></ion-input>
     </ion-col>
     <ion-col class="dateCol">{{contact.date | date: 'mediumDate'}}</ion-col>
     <ion-col>

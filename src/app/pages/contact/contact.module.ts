@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule} from "@angular/common";
 import { ContactLineComponent } from "./contact-line/contactLine.component";
 import {FormsModule} from "@angular/forms";
+import {MaskitoModule} from "@maskito/angular";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {FormsModule} from "@angular/forms";
         ContactRoutingModule,
         CommonModule,
         FormsModule,
+        MaskitoModule,
     ]
 })
 export class ContactModule { }

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { Contact } from "../../Entity";
 import { AlertController } from "@ionic/angular";
+import { MaskitoElementPredicateAsync, MaskitoOptions } from "@maskito/core";
 
 @Component({
   selector: 'app-contact-line',
@@ -12,6 +13,11 @@ export class ContactLineComponent implements OnInit, OnDestroy {
   @Output() deleteEmitter: EventEmitter<number> = new EventEmitter<number>();
   @Output() updateEmitter: EventEmitter<Contact> = new EventEmitter<Contact>();
   editable: boolean = false;
+  readonly phoneMask: MaskitoOptions = {
+    mask: ['+', '1', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  };
+
+  readonly maskPredicate: MaskitoElementPredicateAsync = async (el) => (el as HTMLIonInputElement).getInputElement()
   constructor( private alertController: AlertController
   ) {
   }

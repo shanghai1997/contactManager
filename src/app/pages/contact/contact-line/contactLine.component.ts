@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { Contact } from "../../Entity";
 import { AlertController } from "@ionic/angular";
 
@@ -9,6 +9,8 @@ import { AlertController } from "@ionic/angular";
 })
 export class ContactLineComponent implements OnInit, OnDestroy {
   @Input() contact: Contact;
+  @Output() deleteEmitter: EventEmitter<number> = new EventEmitter<number>();
+  @Output() updateEmitter: EventEmitter<Contact> = new EventEmitter<Contact>();
   editable: boolean = false;
   constructor( private alertController: AlertController
   ) {
@@ -22,11 +24,27 @@ export class ContactLineComponent implements OnInit, OnDestroy {
       header: 'Alert',
       subHeader: 'Important message',
       message: 'Are you sure to delete this contact?',
-      buttons: ['OK'],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.deleteEmitter.emit(this.contact.id)
+          },
+        },
+      ]
     });
 
     await alert.present();
-}
+  }
+
+  updateContact() {
+    this.editable = false;
+  }
 
   ngOnDestroy() {
   }

@@ -1,22 +1,22 @@
 <div class="chat-container">
   <ion-row>
     <ion-col>
-      <ion-input [disabled]="!editable" [clearOnEdit]="true" value="{{contact.name}}"></ion-input>
+      <ion-input [disabled]="!editable" [clearOnEdit]="true" [(ngModel)]="contact.name"></ion-input>
     </ion-col>
     <ion-col>
-      <ion-input [disabled]="!editable" [clearOnEdit]="true" value="{{contact.number}}"></ion-input>
+      <ion-input [disabled]="!editable" [clearOnEdit]="true" [(ngModel)]="contact.number"></ion-input>
     </ion-col>
     <ion-col>{{contact.date | date: 'mediumDate'}}</ion-col>
     <ion-col>
       <ion-button *ngIf="!editable" (click)="this.editable = true">
         <ion-label> Edit </ion-label>
       </ion-button>
-      <ion-button *ngIf="editable">
+      <ion-button *ngIf="editable" (click)="updateContact()">
         <ion-label> Update </ion-label>
       </ion-button>
       <ion-button (click)="conFirmDelete()">
         <ion-label> Delete </ion-label>
       </ion-button>
-    </ion-col>>
+    </ion-col>
   </ion-row>
 </div>

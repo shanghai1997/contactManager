@@ -7,7 +7,12 @@
         <ion-col>Date Created</ion-col>
         <ion-col>Option</ion-col>
       </ion-row>
-      <app-contact-line *ngFor="let contact of contactList" [contact]="contact"></app-contact-line>
+      <app-contact-line *ngFor="let contact of contactList" [contact]="contact" (deleteEmitter)="onDeleteContact($event)"></app-contact-line>
+      <ion-row>
+        <ion-button (click)="addLine()">
+          <ion-label>Add</ion-label>
+        </ion-button>
+      </ion-row>
     </ion-grid>
   </div>
 </ion-content>

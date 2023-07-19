@@ -1,7 +1,7 @@
 <ion-content>
   <div class="main-content">
     <ion-item>
-      <ion-input class="filter" label="Name Filter"></ion-input>
+      <ion-input class="filter" (ionInput)="updateDisplayedList($event)" label="Name Filter"></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>
@@ -14,7 +14,7 @@
         </ion-col>
         <ion-col>Option</ion-col>
       </ion-row>
-      <app-contact-line *ngFor="let contact of contactList" [contact]="contact" (deleteEmitter)="onDeleteContact($event)"></app-contact-line>
+      <app-contact-line *ngFor="let contact of displayedList" [contact]="contact" (deleteEmitter)="onDeleteContact($event)"></app-contact-line>
       <ion-row>
         <ion-button (click)="addLine()">
           <ion-label>Add</ion-label>

@@ -12,6 +12,10 @@ export class ContactPage implements OnInit, OnDestroy {
     {id: 88, name: 'Brett', number: 7097692008, date: new Date('1998-12-17')},
     {id: 8989, name: 'Sanyu', number: 7097692008, date: new Date('1999-12-17')}];
 
+  displayedList = [...this.contactList];
+
+  filterContent: string;
+
   constructor(
   ) {
   }
@@ -21,6 +25,10 @@ export class ContactPage implements OnInit, OnDestroy {
 
   onDeleteContact(id: number) {
     this.contactList = this.contactList.filter(contact => contact.id !== id)
+  }
+
+  updateDisplayedList(event) {
+    this.displayedList = this.contactList.filter(c => c.name.includes(event.target!.value))
   }
 
   addLine() {

@@ -25,14 +25,22 @@ export class ContactPage implements OnInit, OnDestroy {
 
   onDeleteContact(id: number) {
     this.contactList = this.contactList.filter(contact => contact.id !== id)
+    this.displayedList = this.contactList.filter(c => c.name && c.name.includes(this.filterContent))
   }
 
   updateDisplayedList(event) {
-    this.displayedList = this.contactList.filter(c => c.name.includes(event.target!.value))
+    this.displayedList = this.contactList.filter(c => c.name && c.name.includes(event.target!.value))
+  }
+
+  sortDisplayedList(type: number) {
+    this.displayedList = type ?
+      this.displayedList.sort((a,b) => a.date.valueOf() - b.date.valueOf())
+      : this.displayedList.sort((a,b) => a.name.charCodeAt(0) - b.name.charCodeAt(0))
   }
 
   addLine() {
-    this.contactList.push({id: Math.random()*100 + Math.random()*100, number: null, name: null, date: new Date()})
+    this.contactList.push({id: Math.random()*100 + Math.random()*100, number: 0, name: 'sample', date: new Date()})
+    this.displayedList = this.contactList.filter(c => c.name && c.name.includes(this.filterContent))
   }
 
   ngOnDestroy() {

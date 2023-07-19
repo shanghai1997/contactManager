@@ -1,16 +1,16 @@
 <ion-content>
   <div class="main-content">
     <ion-item>
-      <ion-input class="filter" (ionInput)="updateDisplayedList($event)" label="Name Filter"></ion-input>
+      <ion-input #filter class="filter" (ionInput)="updateDisplayedList($event)" [(ngModel)]="filterContent" label="Name Filter"></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>
         <ion-col>Name
-          <ion-icon color="primary" name="swap-vertical-outline"></ion-icon>
+          <ion-icon (click)="sortDisplayedList(0)" color="primary" name="arrow-up-outline"></ion-icon>
         </ion-col>
         <ion-col>Number</ion-col>
         <ion-col>Date Created
-          <ion-icon color="primary" name="swap-vertical-outline"></ion-icon>
+          <ion-icon (click)="sortDisplayedList(1)" color="primary" name="arrow-up-outline"></ion-icon>
         </ion-col>
         <ion-col>Option</ion-col>
       </ion-row>

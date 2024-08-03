@@ -8,10 +8,9 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { Contact } from "../Entity";
 
 @Component({
-  selector: 'app-contact',
+  selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })

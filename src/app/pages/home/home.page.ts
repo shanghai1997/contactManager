@@ -1,14 +1,14 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver,
-  ComponentRef,
+  ComponentRef, ElementRef,
   OnDestroy,
-  OnInit,
+  OnInit, Renderer2,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
 import {IonInput} from "@ionic/angular";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-home',
@@ -17,11 +17,14 @@ import {IonInput} from "@ionic/angular";
 })
 export class HomePage implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('image_container', {read: ViewContainerRef}) image_container: ViewContainerRef;
-  @ViewChild('ionInputEl', { static: true }) ionInputEl!: IonInput;
+  @ViewChild('ionInputEl', {static: true}) ionInputEl!: IonInput;
+  @ViewChild('fileInput', {static: false}) fileInput: ElementRef;
   cmpRef: ComponentRef<any>
   inputModel = '';
-
-  constructor( private componentFactoryResolver: ComponentFactoryResolver
+  imageLoaded = false
+  imageSrc: string | ArrayBuffer | null = null;
+  constructor(private renderer: Renderer2,
+              private http: HttpClient
   ) {
   }
 
@@ -46,4 +49,23 @@ export class HomePage implements OnInit, OnDestroy, AfterViewInit {
      */
     this.ionInputEl.value = this.inputModel = filteredValue;
   }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      console.log('Selected file:', file);
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageSrc = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  openFilePicker() {
+    this.renderer.selectRootElement(this.fileInput.nativeElement).click();
+  }
+
 }

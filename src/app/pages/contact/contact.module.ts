@@ -12,12 +12,12 @@ import {MaskitoModule} from "@maskito/angular";
     ContactPage,
     ContactLineComponent
   ],
-    imports: [
-        IonicModule,
-        ContactRoutingModule,
-        CommonModule,
-        FormsModule,
-        MaskitoModule,
-    ]
+  imports: [
+    IonicModule,
+    ContactRoutingModule,
+    CommonModule,
+    FormsModule,
+    MaskitoModule,
+  ]
 })
 export class ContactModule { }

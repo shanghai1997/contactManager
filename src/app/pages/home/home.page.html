@@ -1,11 +1,15 @@
 <ion-content>
   <div class="main-content">
-    <ion-item>
+    <ion-button (click)="openFilePicker()" shape="round">Load Image</ion-button>
+    <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+    <div *ngIf="imageSrc">
+      <ion-img [src]="imageSrc"></ion-img>
+    </div>
+    <ion-item *ngIf="imageSrc">
       <ion-input
-        label="Input with clear button"
         labelPlacement="stacked"
         [clearInput]="true"
-        placeholder="Enter your expected modification in text",
+        placeholder="Enter your expected modification in text"
         (ionInput)="onInput($event)"
       >
       </ion-input>

@@ -1,0 +1,7 @@
+<ion-content>
+  <div class="main-content">
+    <ion-item>
+      <ion-input #filter class="filter" (ionInput)="updateDisplayedList($event)" [(ngModel)]="filterContent" label="Name Filter"></ion-input>
+    </ion-item>
+  </div>
+</ion-content>

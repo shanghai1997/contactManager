@@ -1,0 +1,22 @@
+.main-content {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  height: max-content;
+  flex-direction: column;
+
+  ion-input.filter {
+    --background: #373737;
+    --color: #fff;
+    --placeholder-color: #ddd;
+    --placeholder-opacity: 0.8;
+
+    --padding-bottom: 10px;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --padding-top: 10px;
+    margin-bottom: 30px;
+  }
+}
